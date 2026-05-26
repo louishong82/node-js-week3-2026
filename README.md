@@ -148,7 +148,7 @@ node-js-week3-2026/
 **方式一：Postman Collection**
 
 此專案附有 `week3_postman_collection.json`，匯入 Postman 後即可快速測試各 API。
-關於匯入流程、相關操作步驟，以及一些注意事項，可參考 [Week3 Postman Collection 教學]()
+關於匯入流程、相關操作步驟，以及一些注意事項，可參考 [Week3 Postman Collection 教學](https://hackmd.io/@hexschool/BJ133TzlGx)
 
 **方式二：Swagger UI**
 
