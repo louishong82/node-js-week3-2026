@@ -25,5 +25,27 @@ const router = express.Router();
 /* 作答區
 router.METHOD('PATH', (req, res) => { ... });
 */
+router.post('/',(req,res)=>{
+    const form = formidable({
+        uploadDir,
+        maxFileSize,
+        keepExtensions: true
+    })
+    form.parse(req,(err,fields,files)=>{
+        const file = Array.isArray(files.image)? files.image[0]:files.image;
+
+        if(err){
+            return res.status(500).json({'error':err.message})
+        }else if (!file){
+            return res.status(400).json({'error':'No file uploaded'})
+        }
+        
+        res.status(200).json({
+            filename:file.originalFilename,
+            sizeKB:Math.round(file.size / 1024),
+            savedPath: file.filepath
+        })
+    })
+})
 
 module.exports = router;
