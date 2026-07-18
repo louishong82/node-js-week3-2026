@@ -12,18 +12,13 @@ const initialMembers = require('../fixtures/members.json');
 /* 作答區
 const members = ;
 */
-const members = [
-  { "id": 1, "name": "小華", "level": "VIP" },
-  { "id": 2, "name": "小美", "level": "normal" },
-  { "id": 3, "name": "阿強", "level": "VIP" },
-  { "id": 4, "name": "小明", "level": "normal" }
-];
+const members = [...initialMembers]
 
 // 2. 下一個新增會員要使用的 id
 /* 作答區
 let nextId = ...;
 */
-let nextId = 5 ;
+let nextId = members.length + 1 ;
 // 3. 兩個內部 helper 函式
 
 // 函式一：filterByQuery(list, query)：
@@ -104,9 +99,9 @@ router.get('/:id',(req,res)=>{
 router.METHOD('PATH', (req, res) => { ... });
 */
 router.post('/',(req,res)=>{
-    const body = validateBody(req.body)
-    if(!body.valid){
-       return  res.status(400).json({'error':body.error})
+    const result = validateBody(req.body)
+    if(!result.valid){
+       return  res.status(400).json({'error':result.error})
     }
     const newMember = { ...req.body,id: nextId++ };
     members.push(newMember);
